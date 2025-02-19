@@ -1,0 +1,45 @@
+STEP 1
+HARVEST -> API Token &  Account ID & Token Name
+API Token
+  3322163.pt.TVjuZtsp96cmFR6JVM5srPKY_AB5qTrJl8-Ec_K9lwStSVAIRsAG7DTN3JjfaIW6TRXk4vPgY-RyGItEJ4tFHA
+Account ID
+  150214
+Token Name:
+  MyHarvestToken
+
+
+Test whether retrieved API information works: File name: test_harvest_api.py
+File contents:
+import requests
+
+# Your Harvest API credentials
+api_token = '3322163.pt.TVjuZtsp96cmFR6JVM5srPKY_AB5qTrJl8-Ec_K9lwStSVAIRsAG7DTN3JjfaIW6TRXk4vPgY-RyGItEJ4tFHA'
+account_id = '150214'
+
+# The base URL for the Harvest API
+base_url = 'https://api.harvestapp.com/v2'
+
+# Headers for authorization
+headers = {
+    'Authorization': f'Bearer {api_token}',
+    'Harvest-Account-ID': account_id,
+    'Content-Type': 'application/json',
+}
+
+# Test endpoint: Get the current user information
+url = f'{base_url}/users/me'
+
+# Send GET request
+response = requests.get(url, headers=headers)
+
+# Check response status
+if response.status_code == 200:
+    print("API Token is working! Here's the user data:")
+    print(response.json())
+else:
+    print(f"Error: {response.status_code}, {response.text}")
+
+CMD prompt to check file in specified directory. dir "C:\Users\TshepisoMojapelo\OneDrive - Enerweb\Documents\Harvest_Timesheet\test_harvest_api.py" /s
+
+My permissions: Permissions: Read/write access to your own expenses and timers
+
